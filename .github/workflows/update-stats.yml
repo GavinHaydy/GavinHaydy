@@ -35,4 +35,4 @@ jobs:
           git pull --rebase
           git add README.md
           git commit -m "chore: update stats" || echo "no changes"
-          git push
+          git push --force
