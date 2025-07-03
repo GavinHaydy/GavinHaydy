@@ -70,31 +70,65 @@ async function getCommitCount(octokit, owner, repo, branch) {
 }
 
 function generateSVG(langStats, totalCommits) {
-  const width = 420;
-  const lineHeight = 28;
+  const width = 460;
+  const lineHeight = 30;
   const paddingTop = 40;
-  const entries = Object.entries(langStats);
-  const height = paddingTop + entries.length * lineHeight + 50;
+  const barHeight = 16;
+  const barMaxWidth = 300;
+  const fontFamily = 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
 
-  const langLines = entries.map(([lang, bytes], i) => `
-    <text x="20" y="${paddingTop + i * lineHeight}" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
-      ${lang}: ${bytes.toLocaleString()} bytes
-    </text>
-  `).join('\n');
+  // GitHub常用语言颜色简表（可扩展）
+  const langColors = {
+    JavaScript: '#f1e05a',
+    TypeScript: '#2b7489',
+    Python: '#3572A5',
+    Java: '#b07219',
+    HTML: '#e34c26',
+    CSS: '#563d7c',
+    Go: '#00ADD8',
+    Rust: '#dea584',
+    Shell: '#89e051',
+    // 不在表里的用灰色
+    default: '#6e6e6e'
+  };
+
+  // 计算总字节数
+  const totalBytes = Object.values(langStats).reduce((a, b) => a + b, 0);
+
+  // 按字节数排序，降序
+  const sortedLangs = Object.entries(langStats)
+    .sort(([, a], [, b]) => b - a);
+
+  const height = paddingTop + sortedLangs.length * lineHeight + 50;
+
+  const langLines = sortedLangs.map(([lang, bytes], i) => {
+    const percent = (bytes / totalBytes) * 100;
+    const barWidth = (percent / 100) * barMaxWidth;
+    const color = langColors[lang] || langColors.default;
+    const yPos = paddingTop + i * lineHeight;
+
+    return `
+      <text x="20" y="${yPos - 6}" font-size="16" fill="#cdd9e5" font-family="${fontFamily}" font-weight="600">${lang}</text>
+      <text x="${20 + barMaxWidth + 10}" y="${yPos - 6}" font-size="16" fill="#8b949e" font-family="${fontFamily}">${percent.toFixed(1)}%</text>
+      <rect x="20" y="${yPos}" width="${barMaxWidth}" height="${barHeight}" fill="#30363d" rx="8" ry="8" />
+      <rect x="20" y="${yPos}" width="${barWidth}" height="${barHeight}" fill="${color}" rx="8" ry="8" />
+    `;
+  }).join('\n');
 
   return `
-<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="私有仓库统计卡片">
+<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="私有仓库语言占比统计卡片">
   <rect width="100%" height="100%" fill="#0d1117" rx="20" ry="20"/>
-  <text x="20" y="28" font-size="22" fill="#79c0ff" font-weight="bold" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
-    私有仓库统计
+  <text x="20" y="28" font-size="24" fill="#58a6ff" font-weight="bold" font-family="${fontFamily}">
+    私有仓库语言占比
   </text>
   ${langLines}
-  <text x="20" y="${paddingTop + entries.length * lineHeight + 30}" font-size="20" fill="#79c0ff" font-weight="bold" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+  <text x="20" y="${paddingTop + sortedLangs.length * lineHeight + 30}" font-size="20" fill="#79c0ff" font-weight="bold" font-family="${fontFamily}">
     总提交数: ${totalCommits.toLocaleString()}
   </text>
 </svg>
   `;
 }
+
 
 async function updateReadmeAndSvg() {
   const { langStats, totalCommits } = await getPrivateRepoStats();
