@@ -1,0 +1,76 @@
+
+<svg width="420" height="454" viewBox="0 0 420 454" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="私有仓库统计卡片">
+  <rect width="100%" height="100%" fill="#0d1117" rx="20" ry="20"/>
+  <text x="20" y="28" font-size="22" fill="#79c0ff" font-weight="bold" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+    私有仓库统计
+  </text>
+  
+    <text x="20" y="40" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Vue: 312,966 bytes
+    </text>
+  
+
+    <text x="20" y="68" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      JavaScript: 3,789,005 bytes
+    </text>
+  
+
+    <text x="20" y="96" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      HTML: 741,439 bytes
+    </text>
+  
+
+    <text x="20" y="124" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      CSS: 43,966 bytes
+    </text>
+  
+
+    <text x="20" y="152" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Sass: 319 bytes
+    </text>
+  
+
+    <text x="20" y="180" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Python: 183,343 bytes
+    </text>
+  
+
+    <text x="20" y="208" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Shell: 23,835 bytes
+    </text>
+  
+
+    <text x="20" y="236" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Go: 3,098,982 bytes
+    </text>
+  
+
+    <text x="20" y="264" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Batchfile: 861 bytes
+    </text>
+  
+
+    <text x="20" y="292" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Dockerfile: 1,623 bytes
+    </text>
+  
+
+    <text x="20" y="320" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      TypeScript: 204,261 bytes
+    </text>
+  
+
+    <text x="20" y="348" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Less: 588,422 bytes
+    </text>
+  
+
+    <text x="20" y="376" font-size="18" fill="#58a6ff" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+      Java: 101,688 bytes
+    </text>
+  
+  <text x="20" y="434" font-size="20" fill="#79c0ff" font-weight="bold" font-family="Segoe UI, Tahoma, Geneva, Verdana, sans-serif">
+    总提交数: 1,265
+  </text>
+</svg>
+  
