@@ -35,4 +35,5 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git add README.md
           git commit -m "chore: update stats" || echo "no changes"
+          echo ">>> running git push --force now..."
           git push --force
